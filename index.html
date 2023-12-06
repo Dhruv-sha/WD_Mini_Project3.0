@@ -1,0 +1,285 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+   <style>
+
+    body {
+        background: url('https://static.dezeen.com/uploads/2017/08/apple-park-john-ive-architecture-offices_dezeen_hero-1a.jpg') no-repeat center center fixed;
+        background-size: cover;
+        background-color: #90EE90;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: #333;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    h2 {
+        font-weight: bold;
+        color: #009688;
+    }
+
+    .tabs {
+        display: flex;
+        margin-bottom: 20px;
+        background-color: #009688;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        background-color: #00796b;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 0;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #004d40;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .active-tab {
+        display: block;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .upload-section {
+        margin-top: 20px;
+    }
+
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .btn {
+        border: 2px solid gray;
+        color: gray;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    .upload-btn-wrapper .upload-btn {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    a {
+        color: #4CAF50;
+    }
+
+    a:hover {
+        color: #45a049;
+    }
+
+    .submit-btn {
+        background-color: #f44336;
+        color: #fff;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #d32f2f;
+    }
+
+    .error-message {
+        color: #f44336;
+        margin-top: 10px;
+    }
+</style>
+    <script>
+        function openTab(tabName) {
+            var i, x;
+            x = document.getElementsByClassName("tab-content");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+
+        function validateForm() {
+            var name = document.forms["applicationForm"]["name"].value;
+            var email = document.forms["applicationForm"]["email"].value;
+            var phone = document.forms["applicationForm"]["phone"].value;
+
+            if (name === "" || email === "" || phone === "") {
+                document.getElementById("errorMessage").innerHTML = "All fields are required";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>JOB APPLICATION FORM</h2>
+
+    <div class="tabs">
+        <button onclick="openTab('personalTab')">Personal Info</button>
+        <button onclick="openTab('educationTab')">Education</button>
+        <button onclick="openTab('experienceTab')">Experience</button>
+        <button onclick="openTab('skillsTab')">Skills</button>
+        <button onclick="openTab('additionalTab')">Additional Info</button>
+    </div>
+
+    <div id="personalTab" class="tab-content active-tab">
+        <form name="applicationForm" onsubmit="return validateForm()">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="email" name="email"></td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td><input type="tel" name="phone"></td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td><input type="date" name="dob"></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <label><input type="radio" name="gender" value="male"> Male</label>
+                        <label><input type="radio" name="gender" value="female"> Female</label>
+                        <label><input type="radio" name="gender" value="other"> Other</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td><textarea name="address" rows="4"></textarea></td>
+                </tr>
+               
+            </table>
+            <div id="errorMessage" class="error-message"></div>
+        </form>
+    </div>
+
+    <div id="educationTab" class="tab-content">
+        <form>
+            <table>
+                <tr>
+                    <th>Degree</th>
+                    <td><input type="text" name="degree"></td>
+                </tr>
+                <tr>
+                    <th>Institution</th>
+                    <td><input type="text" name="institution"></td>
+                </tr>
+                
+            </table>
+        </form>
+    </div>
+
+    <div id="experienceTab" class="tab-content">
+        <form>
+            <table>
+                <tr>
+                    <th>Job Title</th>
+                    <td><input type="text" name="jobTitle"></td>
+                </tr>
+                <tr>
+                    <th>Company</th>
+                    <td><input type="text" name="company"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <div id="skills" class="tab-content">
+        <form>
+            <table>
+                <tr>
+                    <th>skills</th>
+                    <td><input type="text" name="skills"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="additionalTab" class="tab-content">
+        <form>
+            <table>
+                <tr>
+                    <th>Additional Info</th>
+                    <td><textarea name="additionalInfo" rows="4"></textarea></td>
+                </tr>
+                
+            </table>
+        </form>
+    </div>
+
+    <div class="upload-section">
+        <h3>Upload Documents</h3>
+        <div class="upload-btn">
+            <button class="btn">Choose a file</button>
+          
+        </div>
+    </div>
+
+    <p>Before clicking on submit button read our <a href="file:///C:/Users/LENOVO/OneDrive/Desktop/WDMTerms.html">Terms and Policies</a>.</p>
+
+    <button class="submit-btn" type="submit">Submit</button>
+
+</div>
+
+</body>
+</html>
